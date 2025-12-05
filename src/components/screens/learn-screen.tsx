@@ -186,8 +186,12 @@ function VippsiLearningTip() {
     <div className="px-4">
       <div className="bg-gradient-to-r from-[#ff5b24]/10 to-[#5e3dc2]/10 rounded-[14px] p-4">
         <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff5b24] to-[#ff7a4d] flex items-center justify-center flex-shrink-0">
-            <Sparkles className="w-5 h-5 text-white" />
+          <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center flex-shrink-0 shadow-sm">
+            <img 
+              src="/Vippsi 1.png" 
+              alt="Vippsi" 
+              className="w-9 h-9 object-cover scale-150 translate-y-0.5"
+            />
           </div>
           <div>
             <h4 className="text-[14px] font-semibold text-black mb-1">Did you know? 💡</h4>

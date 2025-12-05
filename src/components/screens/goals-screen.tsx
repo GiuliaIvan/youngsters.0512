@@ -76,12 +76,12 @@ function VippsiTip() {
     <div className="px-4">
       <div className="bg-gradient-to-r from-[#ff5b24]/10 to-[#5e3dc2]/10 rounded-[14px] p-4">
         <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff5b24] to-[#ff7a4d] flex items-center justify-center flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 36 36" fill="none">
-              <circle cx="13" cy="15" r="2" fill="white"/>
-              <circle cx="23" cy="15" r="2" fill="white"/>
-              <path d="M13 22C13 22 15 25 18 25C21 25 23 22 23 22" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
+          <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center flex-shrink-0 shadow-sm">
+            <img 
+              src="/Vippsi 1.png" 
+              alt="Vippsi" 
+              className="w-9 h-9 object-cover scale-150 translate-y-0.5"
+            />
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">

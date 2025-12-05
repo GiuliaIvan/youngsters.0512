@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import Image from "next/image";
 
 interface AvatarProps {
   src?: string;
@@ -21,7 +22,7 @@ export function Avatar({ src, initials, size = "md", variant = "user", children 
   const variants = {
     user: "bg-[#ffe5db] text-[#ff5b24]",
     merchant: "bg-[#e6e4ec] text-[#49367d]",
-    vippsi: "bg-gradient-to-br from-[#ff5b24] to-[#5e3dc2] text-white",
+    vippsi: "bg-white text-white",
   };
 
   return (
@@ -44,51 +45,39 @@ export function Avatar({ src, initials, size = "md", variant = "user", children 
 // Vippsi Avatar - the mascot
 interface VippsiAvatarProps {
   size?: "sm" | "md" | "lg" | "xl";
-  mood?: "happy" | "excited" | "thinking" | "celebrating";
   onClick?: () => void;
 }
 
-export function VippsiAvatar({ size = "md", mood = "happy", onClick }: VippsiAvatarProps) {
+export function VippsiAvatar({ size = "md", onClick }: VippsiAvatarProps) {
   const sizes = {
-    sm: "w-10 h-10",
-    md: "w-14 h-14",
-    lg: "w-20 h-20",
-    xl: "w-28 h-28",
-  };
-
-  const moods = {
-    happy: "😊",
-    excited: "🤩",
-    thinking: "🤔",
-    celebrating: "🎉",
+    sm: { container: "w-10 h-10", img: 32 },
+    md: { container: "w-14 h-14", img: 48 },
+    lg: { container: "w-20 h-20", img: 72 },
+    xl: { container: "w-28 h-28", img: 100 },
   };
 
   return (
     <button 
       className={`
-        ${sizes[size]} 
+        ${sizes[size].container} 
         rounded-full 
-        bg-gradient-to-br from-[#ff5b24] to-[#ff7a4d]
+        bg-white
         flex items-center justify-center
-        shadow-lg shadow-[#ff5b24]/30
+        shadow-lg shadow-black/10
         hover:scale-105 active:scale-95
         transition-transform duration-200
+        overflow-hidden
         ${onClick ? 'cursor-pointer' : ''}
       `}
       onClick={onClick}
     >
-      {/* Vippsi face */}
-      <div className="relative flex items-center justify-center">
-        {/* Eyes */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-1.5">
-          <div className="w-1.5 h-2 bg-white rounded-full" />
-          <div className="w-1.5 h-2 bg-white rounded-full" />
-        </div>
-        {/* Mood indicator */}
-        <span className={`text-${size === 'sm' ? 'lg' : size === 'md' ? 'xl' : '3xl'}`}>
-          {moods[mood]}
-        </span>
-      </div>
+      <Image 
+        src="/Vippsi 1.png" 
+        alt="Vippsi" 
+        width={sizes[size].img}
+        height={sizes[size].img}
+        className="object-cover scale-150 translate-y-1"
+      />
     </button>
   );
 }
@@ -106,36 +95,31 @@ export function FloatingVippsi({ onClick, hasNotification = false }: FloatingVip
         className="
           w-16 h-16 
           rounded-full 
-          bg-gradient-to-br from-[#ff5b24] to-[#ff7a4d]
+          bg-white
           flex items-center justify-center
-          shadow-xl shadow-[#ff5b24]/40
+          shadow-xl shadow-black/20
           hover:scale-105 active:scale-95
           transition-transform duration-200
           relative
+          overflow-hidden
         "
         onClick={onClick}
       >
-        {/* Vippsi character */}
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-          {/* Body */}
-          <circle cx="18" cy="18" r="14" fill="white" fillOpacity="0.2"/>
-          {/* Face */}
-          <circle cx="13" cy="15" r="2.5" fill="white"/>
-          <circle cx="23" cy="15" r="2.5" fill="white"/>
-          <circle cx="14" cy="14" r="1" fill="#333"/>
-          <circle cx="24" cy="14" r="1" fill="#333"/>
-          {/* Smile */}
-          <path d="M12 22C12 22 15 26 18 26C21 26 24 22 24 22" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
+        <Image 
+          src="/Vippsi 1.png" 
+          alt="Vippsi" 
+          width={56}
+          height={56}
+          className="object-cover scale-150 translate-y-1"
+        />
         
         {/* Notification dot */}
         {hasNotification && (
-          <div className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#5e3dc2] rounded-full border-2 border-white flex items-center justify-center">
-            <span className="text-[8px] text-white font-bold">!</span>
+          <div className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-[#ff5b24] rounded-full border-2 border-white flex items-center justify-center">
+            <span className="text-[9px] text-white font-bold">1</span>
           </div>
         )}
       </button>
     </div>
   );
 }
-

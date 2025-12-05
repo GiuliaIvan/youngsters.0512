@@ -2,6 +2,7 @@
 
 import { X, Send, Sparkles, TrendingUp, Target, Lightbulb } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 interface VippsiAssistantProps {
   isOpen: boolean;
@@ -34,9 +35,20 @@ interface MessageProps {
 
 function Message({ type, content }: MessageProps) {
   return (
-    <div className={`flex ${type === "user" ? "justify-end" : "justify-start"}`}>
+    <div className={`flex ${type === "user" ? "justify-end" : "justify-start"} gap-2`}>
+      {type === "vippsi" && (
+        <div className="w-8 h-8 rounded-full bg-white overflow-hidden flex-shrink-0">
+          <Image 
+            src="/Vippsi 1.png" 
+            alt="Vippsi" 
+            width={32}
+            height={32}
+            className="object-cover scale-150 translate-y-0.5"
+          />
+        </div>
+      )}
       <div 
-        className={`max-w-[80%] px-4 py-3 rounded-[18px] ${
+        className={`max-w-[75%] px-4 py-3 rounded-[18px] ${
           type === "user" 
             ? "bg-white text-[#333] rounded-br-[4px]" 
             : "bg-white/15 text-white rounded-bl-[4px]"
@@ -94,14 +106,14 @@ export function VippsiAssistant({ isOpen, onClose, context = "home" }: VippsiAss
         <div className="flex items-center justify-between px-5 pt-4 pb-3">
           <div className="flex items-center gap-3">
             {/* Vippsi Avatar */}
-            <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-              <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
-                <circle cx="13" cy="14" r="2.5" fill="white"/>
-                <circle cx="23" cy="14" r="2.5" fill="white"/>
-                <circle cx="14" cy="13" r="1" fill="#333"/>
-                <circle cx="24" cy="13" r="1" fill="#333"/>
-                <path d="M12 21C12 21 15 25 18 25C21 25 24 21 24 21" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
+            <div className="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center">
+              <Image 
+                src="/Vippsi 1.png" 
+                alt="Vippsi" 
+                width={44}
+                height={44}
+                className="object-cover scale-150 translate-y-0.5"
+              />
             </div>
             <div>
               <h2 className="text-white text-[18px] font-semibold">Vippsi</h2>
@@ -208,36 +220,34 @@ export function FloatingVippsiButton({ onClick, hasNotification = false }: Float
         className="
           w-16 h-16 
           rounded-full 
-          bg-gradient-to-br from-[#ff5b24] to-[#ff7a4d]
+          bg-white
           flex items-center justify-center
-          shadow-xl shadow-[#ff5b24]/40
+          shadow-xl shadow-black/20
           hover:scale-105 active:scale-95
           transition-transform duration-200
           relative
+          overflow-hidden
         "
         onClick={onClick}
       >
-        {/* Vippsi character */}
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-          <circle cx="18" cy="18" r="14" fill="white" fillOpacity="0.2"/>
-          <circle cx="13" cy="15" r="2.5" fill="white"/>
-          <circle cx="23" cy="15" r="2.5" fill="white"/>
-          <circle cx="14" cy="14" r="1" fill="#333"/>
-          <circle cx="24" cy="14" r="1" fill="#333"/>
-          <path d="M12 22C12 22 15 26 18 26C21 26 24 22 24 22" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
+        <Image 
+          src="/Vippsi 1.png" 
+          alt="Vippsi" 
+          width={56}
+          height={56}
+          className="object-cover scale-150 translate-y-1"
+        />
         
         {/* Notification dot */}
         {hasNotification && (
-          <div className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-[#5e3dc2] rounded-full border-2 border-white flex items-center justify-center">
+          <div className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-[#ff5b24] rounded-full border-2 border-white flex items-center justify-center">
             <span className="text-[9px] text-white font-bold">1</span>
           </div>
         )}
         
         {/* Pulse animation */}
-        <div className="absolute inset-0 rounded-full bg-[#ff5b24] animate-ping opacity-20" />
+        <div className="absolute inset-0 rounded-full bg-[#ff5b24]/20 animate-ping opacity-30" />
       </button>
     </div>
   );
 }
-

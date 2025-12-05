@@ -112,12 +112,12 @@ function VippsiCustomization() {
       <div className="flex items-center gap-4">
         {/* Current Vippsi */}
         <div className="relative">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#ff5b24] to-[#ff7a4d] flex items-center justify-center">
-            <svg width="44" height="44" viewBox="0 0 36 36" fill="none">
-              <circle cx="13" cy="14" r="2.5" fill="white"/>
-              <circle cx="23" cy="14" r="2.5" fill="white"/>
-              <path d="M12 21C12 21 15 25 18 25C21 25 24 21 24 21" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
+          <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center justify-center shadow-md">
+            <img 
+              src="/Vippsi 1.png" 
+              alt="Vippsi" 
+              className="w-[72px] h-[72px] object-cover scale-150 translate-y-1"
+            />
           </div>
           {/* Accessory */}
           <div className="absolute -top-2 left-1/2 -translate-x-1/2">

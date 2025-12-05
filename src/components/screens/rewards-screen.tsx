@@ -168,12 +168,12 @@ function VippsiCollectibles() {
       <Card className="p-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff5b24] to-[#ff7a4d] flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 36 36" fill="none">
-                <circle cx="13" cy="15" r="2" fill="white"/>
-                <circle cx="23" cy="15" r="2" fill="white"/>
-                <path d="M13 22C13 22 15 25 18 25C21 25 23 22 23 22" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
+            <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center shadow-sm">
+              <img 
+                src="/Vippsi 1.png" 
+                alt="Vippsi" 
+                className="w-9 h-9 object-cover scale-150 translate-y-0.5"
+              />
             </div>
             <div>
               <h3 className="text-[15px] font-semibold text-black">Vippsi Collectibles</h3>
